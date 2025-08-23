@@ -1,14 +1,13 @@
-import { useSelector } from "react-redux";
+import useGlobalStore from "../../store/store";
 
 const CheckoutBar = () => {
 
-  const cart = useSelector((state) => state.cart.items);
+  const cart = useGlobalStore((state) => state.cart);
+  console.log("Cart Items in CheckoutBar:", cart);
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalAmount = cart.reduce(
-    (sum, item) => sum + item.quantity * item.price,
-    0
-  );
+
+  const totalItems = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  const totalAmount = cart?.reduce((sum, item) => sum + item.quantity * item.price,0) || 0;
   return (
     <div className="space-y-2 ">
       <div

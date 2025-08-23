@@ -2,11 +2,11 @@ import React from 'react';
 import CartItem from './CartItem';
 import CheckoutBar from './CheckoutBar';
 import { PawPrint, ShoppingCart } from 'lucide-react';
-import { useSelector } from 'react-redux';
+import useGlobalStore from '../../store/store';
 
 const Cart = () => {
  
-  const cart = useSelector(state => state.cart.items);
+  const cart = useGlobalStore((state) => state.cart);
 
   return (
     <>

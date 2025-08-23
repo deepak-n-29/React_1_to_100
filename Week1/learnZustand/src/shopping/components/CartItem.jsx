@@ -1,6 +1,7 @@
 import { Minus, Plus, Trash } from 'lucide-react';
 import { useDispatch } from 'react-redux';
-import { decrementQuantity, incrementQuantity } from '../../store/slices/cartSlice';
+import useGlobalStore from '../../store/store';
+// import { decrementQuantity, incrementQuantity } from '../../store/slices/cartSlice';
 
 const CartItem = ({
   id,
@@ -10,7 +11,8 @@ const CartItem = ({
   image
 }) => {
 
-  const dispatch = useDispatch();
+  const incrementQuantity = useGlobalStore(state => state.incrementQuantity);
+  const decrementQuantity = useGlobalStore(state => state.decrementQuantity); 
 
   return (
     <div className="flex shadow-xl group gap-6 border-b pb-8 border-gray-800">
@@ -29,15 +31,14 @@ const CartItem = ({
         <h3 className="font-fancy text-xl ">{title}</h3>
         <p className="text-lg text-gray-300">Rs. {price}</p>
         <div id="card-footer" className="flex gap-4 mt-4 items-center">
-          <button
-            onClick={() => dispatch(decrementQuantity({id}))}
+          <button onClick={() => decrementQuantity(id)}
             className="p-2 rounded-lg  bg-gray-800 hover:bg-gray-600 cursor-pointer"
           >
             {quantity == 1 ? <Trash color='red' size={16} /> : <Minus size={16} />}
           </button>
           <span className="w-6 text-center">{quantity}</span>
           <button
-            onClick={() => dispatch(incrementQuantity({id}))}
+            onClick={() => incrementQuantity(id)}
             className="p-2 rounded-lg  bg-gray-800 hover:bg-gray-600 cursor-pointer"
           >
             <Plus size={16} />

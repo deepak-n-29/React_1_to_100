@@ -7,10 +7,10 @@ import useCounterStore from './store/store.js'
 // import store from './counter/counterRedux.js'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <Provider store={useCounterStore}>
       
         <App />
     </Provider>
-  </StrictMode>,
+  // </StrictMode>,
 )

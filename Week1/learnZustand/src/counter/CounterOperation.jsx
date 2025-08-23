@@ -1,12 +1,12 @@
-import useCounterStore from '../store/store';
+import useGlobalStore from "../store/store";
 
 const CounterOperation = () => {
 
     console.log("CounterOperation Rendered");
-    const increment = useCounterStore(state => state.increment);
-    const decrement = useCounterStore(state => state.decrement);
-    const reset = useCounterStore(state => state.reset);
-    const incrementAsync = useCounterStore(state => state.incrementAsync);
+    const increment = useGlobalStore(state => state.increment);
+    const decrement = useGlobalStore(state => state.decrement);
+    const reset = useGlobalStore(state => state.reset);
+    const incrementAsync = useGlobalStore(state => state.incrementAsync);
 
   return (
     <div className="flex gap-6 text-black text-4xl">

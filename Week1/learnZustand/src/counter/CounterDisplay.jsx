@@ -1,10 +1,12 @@
-import useCounterStore from '../store/store'
+import useGlobalStore from "../store/store";
 
 const CounterDisplay = () => {
-    const count = useCounterStore(state => state.count) // getter 
-    console.log("CounterDisplay Rendered");
-    return <p className='text-4xl font-bold'> {count} </p>
-    
+
+  const count = useGlobalStore(state => state.count);
+
+  console.log("counterDisplay")
+
+  return <p className="text-4xl">{count}</p>;
 }
 
 export default CounterDisplay
