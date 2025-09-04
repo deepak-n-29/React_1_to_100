@@ -1,8 +1,6 @@
 import React from "react";
 
 const TodoFilter = ({ filter, setFilter }) => {
-    // console.log("Rendering TodoFilter");
-
 
     return (
         <div className="flex gap-2 mb-4">

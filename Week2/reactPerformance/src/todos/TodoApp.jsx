@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo} from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import useGetTodoData from "./useGetTodoData";
 import TodoSearch from "./TodoSearch";
 import TodoFilter from "./TodoFilter";
@@ -14,11 +14,11 @@ const TodoApp = () => {
         setTodoList(todos);
     }, [todos]);
 
-    const filterOptions = {
+    const filterOptions = useMemo(() => ({
         all: () => true,
         completed: (todo) => todo.completed,
         active: (todo) => !todo.completed,
-    };
+    }));
 
     const toggleTodo = useCallback((id) => {
         setTodoList((prev) =>
@@ -42,10 +42,7 @@ const TodoApp = () => {
             <h1 className="text-2xl font-bold mb-4">Todo List</h1>
             <TodoSearch setSearchTerm={setSearchTerm} />
             <TodoFilter filter={filter} setFilter={setFilter} />
-            <TodoList
-                todos={filteredTodos}
-                toggleTodo={toggleTodo}
-            />
+            <TodoList todos={filteredTodos} toggleTodo={toggleTodo} />
         </div>
     );
 };
