@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useCallback, useMemo} from "react";
 import useGetTodoData from "./useGetTodoData";
 import TodoSearch from "./TodoSearch";
 import TodoFilter from "./TodoFilter";
@@ -20,20 +20,22 @@ const TodoApp = () => {
         active: (todo) => !todo.completed,
     };
 
-    const toggleTodo =(id) => {
+    const toggleTodo = useCallback((id) => {
         setTodoList((prev) =>
             prev.map((todo) =>
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
             )
         );
-    }
+    }, []);
 
-    const filteredTodos = todoList.filter((todo) => {
-        return (
-            filterOptions[filter](todo) &&
-            todo.todo.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    });
+    const filteredTodos = useMemo(() => {
+        return todoList.filter((todo) => {
+            return (
+                filterOptions[filter](todo) &&
+                todo.todo.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+    }, [todoList, filterOptions, filter, searchTerm]);
 
     return (
         <div className="max-w-xl mx-auto p-4">

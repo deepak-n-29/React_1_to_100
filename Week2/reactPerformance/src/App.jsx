@@ -4,8 +4,8 @@ import TodoApp from "./todos/TodoApp";
 function App() {
     return (
         <div>
-            {/* <TodoApp /> */}
-            <LearnMemo />
+            <TodoApp />
+            {/* <LearnMemo /> */}
         </div>
     );
 }

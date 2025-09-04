@@ -17,4 +17,4 @@ const TodoSearch = ({ setSearchTerm }) => {
     );
 };
 
-export default TodoSearch;
+export default React.memo(TodoSearch);

@@ -1,16 +1,13 @@
 import React from "react";
 
 const TodoFilter = ({ filter, setFilter }) => {
-    console.log("Rendering TodoFilter");
+    // console.log("Rendering TodoFilter");
 
-    const setAllFilter = () => setFilter("all");
-    const setCompletedFilter = () => setFilter("completed");
-    const setActiveFilter = () => setFilter("active");
 
     return (
         <div className="flex gap-2 mb-4">
             <button
-                onClick={setAllFilter}
+                onClick={() => setFilter("all")}
                 className={`px-3 py-1 rounded ${
                     filter === "all" ? "bg-blue-500 text-white" : "bg-gray-200"
                 }`}
@@ -18,7 +15,7 @@ const TodoFilter = ({ filter, setFilter }) => {
                 All
             </button>
             <button
-                onClick={setCompletedFilter}
+                onClick={() => setFilter("completed")}
                 className={`px-3 py-1 rounded ${
                     filter === "completed"
                         ? "bg-blue-500 text-white"
@@ -28,7 +25,7 @@ const TodoFilter = ({ filter, setFilter }) => {
                 Completed
             </button>
             <button
-                onClick={setActiveFilter}
+                onClick={() => setFilter("active")}
                 className={`px-3 py-1 rounded ${
                     filter === "active"
                         ? "bg-blue-500 text-white"
@@ -41,4 +38,4 @@ const TodoFilter = ({ filter, setFilter }) => {
     );
 };
 
-export default TodoFilter;
+export default React.memo(TodoFilter);

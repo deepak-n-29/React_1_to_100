@@ -21,6 +21,7 @@ const Child = React.memo(
 
 function LearnMemo() {
     const [count, setCount] = React.useState(0);
+    // const a = [4, 5, 1, 2, 3];
 
     // const a = useMemo(() => {
     //     return [4, 5, 1, 2, 3];
